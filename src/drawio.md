@@ -10,4 +10,4 @@
 
 Для вставки диаграммы используйте синтаксис из примера ниже, заметете, что необходимо указать ссылку на файл в репозитории.
 
-@drawio{https://github.com/bndroll/mdb/blob/master/src/diagrams/qwe.drawio}
+![Диаграма 1](diagrams/1_diag.jpg)
