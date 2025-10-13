@@ -1,0 +1,378 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Оказание услуг - system-engineering-playbook</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="src/_assets/custom.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">system-engineering-playbook</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p>#6.1	Оказание услуг по сопровождению Центрального узла ИС СОИ
+Услуги должны оказываться в течении одного календарного года, начиная с 01.01.2025г.
+Состав элементов Центрального узла ИС СОИ согласуется на 1-ом этапе создания ИС СОИ.
+По завершению 1-ого этапа работ по созданию ИС СОИ с Заказчиком должно быть согласовано:</p>
+<ul>
+<li>Состав элементов Центрального узла ИС СОИ;</li>
+<li>Требования по SLA в рамках сопровождения Центрального узла ИС СОИ;</li>
+<li>Параметры определения Приоритета заявок на работы;</li>
+<li>Сроки реагирования и устранения неисправностей по каждому из элементов Центрального узла ИС СОИ;</li>
+<li>Требования к обеспечению бесперебойной работы по каждому элементу Центрального узла ИС СОИ;</li>
+<li>Требования к регламентно-профилактическим мероприятиям по каждому элементу Центрального узла ИС СОИ;</li>
+<li>Требования к мероприятиям по мониторингу здоровья элементов Центрального узла ИС СОИ.
+Оказание услуг по сопровождению Центрального узла ИС СОИ должно осуществляться в соответствии с проектной документацией на СОИ и КСОИБ СОИ.
+6.1.1	Общие требования к услуге по сопровождению Центрального узла ИС СОИ
+Исполнитель предоставляет сервис-менеджера по сопровождению ПО компонентов и подсистем ИС СОИ (далее – сервис-менеджер), являющегося для Заказчика единой точкой входа по следующим вопросам:</li>
+<li>обеспечение бесперебойной работы прикладного программного обеспечения компонентов и подсистем ИС СОИ;</li>
+<li>выполнение регламентно-профилактических мероприятий по обслуживанию прикладного программного обеспечения компонентов и подсистем ИС СОИ;</li>
+<li>обслуживание и сопровождения программно-технических средств, обеспечивающих работу компонентов и подсистем ИС СОИ.
+В компетенцию сервис-менеджера не входят вопросы развития ПО компонентов и подсистем ИС СОИ.
+К сопровождению подсистем и компонентов ИС СОИ, работе с оборудованием и ПО допускаются специалисты Исполнителя, ознакомленные с документацией на подсистемы и компоненты ИС СОИ, инструкциями на оборудование и методиками, принципами, правилами производителя оборудования.
+Заказчик, при необходимости, может предоставить не более 3 рабочих мест работникам Исполнителя.
+По согласованию с Заказчиком услуги могут оказываться без выезда специалиста на объект обслуживания.
+6.1.1.1	Требования к обеспечению бесперебойной работы
+Устранение нештатных ситуаций в функционировании системы должно выполняться с 9-00 до 18-00 по рабочим дням (если иное время не указано в соответствующих разделах настоящих технических требований) в соответствии с Регламентом по обеспечению бесперебойной работы ИС СОИ и проведению регламентно-профилактических мероприятий.
+Устранение нештатных ситуаций в функционировании программно-технических средств, обеспечивающих работу компонента должно выполняться 24 часа в сутки, 7 дней в неделю.
+6.1.1.2	Требования к регламентно-профилактическим мероприятиям
+Исполнитель должен обеспечить выполнение регламентно-профилактических мероприятий на компонентах, подсистемах ИС СОИ, соответствующих базах данных и программно-технических средствах, обеспечивающих функционирование и доступность компонентов, подсистем ИС СОИ с 9.00 до 18.00 по рабочим дням в соответствии с настоящими Техническим заданием и эксплуатационной документацией на каждый компонент/подсистему ИС СОИ.
+6.1.1.3	Требования к мероприятиям по обслуживанию и сопровождению
+Мероприятия по обслуживанию и сопровождению программно-технических средств, обеспечивающих работу компонентов и предназначенных для неавтоматизированной обработки сведений, должны включать в себя следующие мероприятия, выполняемые специалистами Исполнителя:</li>
+<li>обновление по запросу Заказчика ПО, в том числе предоставляемого Заказчиком;</li>
+<li>регулярное поддержание в актуальном состоянии данных, и содержащих перечень и характеристики обслуживаемых программно-технических средств, и ежеквартальное предоставление этих данных Заказчику;</li>
+<li>ежедневные мониторинг, тестирование, диагностика оборудования и ПО, обеспечивающих работу компонентов;</li>
+<li>по необходимости оптимизация производительности программно-технических средств;</li>
+<li>ежедневный контроль настроек, в том числе и в части защиты информации;</li>
+<li>ежедневный контроль технического состояния и конфигураций поддерживаемого ПО и программно-технических средств;</li>
+<li>ежедневный анализ корректности работы поддерживаемой конфигурации оборудования и ПО;</li>
+<li>оказание услуг по сопровождению (включая внесение изменений в программный код) программно-технических средств, настройке новых схем и конфигураций, повышающих производительность и отказоустойчивость.
+#6.2	Оказание услуг по мониторингу состояния защищенности и обеспечению кибербезопасности ИС СОИ
+Услуги должны оказываться в течении одного календарного года, начиная с 01.01.2025г.
+В рамках данного Технического задания осуществляется оказание Услуг по мониторингу состояния защищенности и обеспечению кибербезопасности ИС СОИ, включая реагирование на инциденты ИБ Заказчика путем непрерывного мониторинга и выявления инцидентов ИБ, оперативного реагирования, проведения технического анализа выявленных инцидентов ИБ, выяснения причин возникновения инцидентов ИБ, составления периодической отчётности, реализация обмена информацией о компьютерных инцидентах с ГосСОПКА, а также прогнозирование компьютерных атак на ИС СОИ.
+В состав работ входит:</li>
+<li>мониторинг инцидентов ИБ;</li>
+<li>информационный обмен с ГосСОПКА;</li>
+<li>расследование инцидентов ИБ;</li>
+<li>реагирование на выявленные инциденты ИБ;</li>
+<li>предоставление оперативной и регулярной плановой отчетности;</li>
+<li>разработка отчета о состоянии защищенности Центрального узла ИС СОИ;</li>
+<li>подготовка отчетных документов, необходимых для закрытия этапа;</li>
+<li>отправка Заказчику документов, необходимых для закрытия этапа.
+6.2.1	Требования к услуге по мониторингу состояния защищенности и обеспечению кибербезопасности ИС СОИ
+6.2.1.1	Мониторинг событий ИБ.
+При мониторинге инцидентов ИБ, зафиксированных центром мониторинга Исполнителя должно осуществляться:</li>
+<li>выявление и регистрация инцидентов ИБ в соответствии с SLA, зафиксированных центром мониторинга Исполнителя на основании сценариев обнаружения. Список сценариев и критичность согласовывается с Заказчиком на этапе подключения;</li>
+<li>выявление основных точек мошенничества и злоупотребления полномочиями, зафиксированными в ключевых бизнес-системах;</li>
+<li>первичная обработка выявленного инцидента ИБ: регистрация инцидента, базовая диагностика (обработка ложных срабатываний сценария), уточнение критичности, информирование Заказчика о факте обнаружения инцидента;</li>
+<li>анализ инцидента ИБ: установление причин и источника инцидента, передача информации Заказчику.
+При реагировании на выявленные инциденты ИБ должно осуществляться:</li>
+<li>информирование ответственного специалиста (группы) Заказчика о факте обнаружения инцидента;</li>
+<li>разработка технических мер по блокированию инцидента (при технической возможности);</li>
+<li>сбор и обработка дополнительной информации по запросу уполномоченных специалистов Заказчика в рамках расследования инцидентов;</li>
+<li>участие в процессе нейтрализации последствий инцидента (при необходимости и технической возможности).
+Экспертный анализ событий ИБ объекта Заказчика, переданных в центр мониторинга Исполнителя включает в себя, но не ограничивается следующими критериями:</li>
+<li>анализ событий, обрабатываемых центром мониторинга Исполнителя, для выявления аномалий, потенциально являющихся инцидентами, но не соответствующих текущим сценариям обнаружения инцидентов;</li>
+<li>доработка существующих сценариев обнаружения инцидентов для снижения количества ложных срабатываний;</li>
+<li>ретроспективный анализ событий и выявленных инцидентов для оценки общего уровня защищенности объекта Заказчика;</li>
+<li>расширение списка контролируемых сценариев обнаружения инцидентов в рамках внутренних исследований Исполнителя.
+Изменение профиля Услуг по запросам Заказчика включает в себя:</li>
+<li>подключение/отключение источников, в случае необходимости;</li>
+<li>разработка новых коннекторов для подключения источников;</li>
+<li>выполнение запросов на реализацию новых сценариев обнаружения инцидентов, нетиповых отчетов или dashboard;</li>
+<li>изменение показателей критичности для сценариев обнаружения инцидентов.
+Оказание Услуг по сопровождению и обеспечению доступности ядра средства сбора и анализа событий ИБ включает в себя, но не ограничивается:</li>
+<li>обеспечение работоспособности и доступности средства сбора и анализа событий ИБ;</li>
+<li>обеспечение совместно с Заказчиком, работоспособности и доступности сервера сбора событий на площадке Заказчика;</li>
+<li>обеспечение совместно с сотрудниками Заказчика, работоспособности канала передачи информации между сервером сбора событий и ядром средства сбора и анализа событий ИБ;</li>
+<li>администрирование средства сбора и анализа событий ИБ Заказчика, в том числе базы данных инцидентов.
+6.2.1.2	Информационный обмен с ГосСОПКА:
+Круглосуточное оперативное двухстороннее взаимодействие с Главным центром ГосСОПКА по следующим направлениям:
+–	Выполнение реагирования и расследования выявляемых на инфраструктуре инцидентов совместно с Главным центром ГосСОПКА;
+–	Обработка запросов Главного центра ГосСОПКА по проверке состояния инфраструктуры и выдаче рекомендаций по превентивному противодействию атаке – в течение 3-х часов с момента поступления запроса при наличии технической возможности;
+–	Выдача рекомендаций по адаптации механизмов защиты инфраструктуры согласно информации о возможных векторах атаки, получаемой из Главного центра ГосСОПКА – в течение 2-х часов с момента поступления информации при наличии технической возможности.
+6.2.1.3	Расследование инцидентов ИБ:
+–	Глубокий анализ инцидентов:
+–	Уточнение границ инцидента – задействованных активов и систем;
+–	Идентификация и уточнение информации об атакующем;
+–	Восстановление и уточнение хронологии инцидента;
+–	Установление возможных причин инцидента;
+–	Формирование рекомендаций по дальнейшему реагированию (сдерживанию, устранению и восстановлению) на инциденты и недопущению их повторений.
+6.2.1.4	Реагирование на выявленные инциденты ИБ:</li>
+<li>Изоляция инцидента на подконтрольных СЗИ с целью предотвращения дальнейшего распространения и подавление причин возникновения инцидента;</li>
+<li>Восстановление штатного режима работы подконтрольных СЗИ после успешного устранения инцидента ИБ – отмена выполненных темпоральных настроек в рамках реагирования на инцидент ИБ;</li>
+<li>Сбор и обработка дополнительной информации по запросу уполномоченных специалистов Заказчика.</li>
+</ul>
+<h1 id="Таблица-2--Параметры-оказания-Услуг"><a class="header" href="#Таблица-2--Параметры-оказания-Услуг">Таблица 2 — Параметры оказания Услуг</a></h1>
+<h2 id="1-Мониторинг-инцидентов-ИБ"><a class="header" href="#1-Мониторинг-инцидентов-ИБ">1. Мониторинг инцидентов ИБ</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Параметр</th><th style="text-align: left">Значение</th></tr></thead><tbody>
+<tr><td style="text-align: left">Количество одновременно подключенных к SIEM источников</td><td style="text-align: left">Количество источников (серверов, АРМ, сетевых устройств, СЗИ) и бизнес-приложений уточняется по результатам 1-го этапа создания ИС СОИ</td></tr>
+<tr><td style="text-align: left">Длительность хранения собранных событий</td><td style="text-align: left">активный поиск – 3 месяца<br>исторический архив – 1 год</td></tr>
+<tr><td style="text-align: left">Аппаратная платформа для подсистемы сбора событий</td><td style="text-align: left">предоставляется Заказчиком. Требования к программно-аппаратному обеспечению:<br>– SIEM Agent – 8 vCPU / 32GB RAM / 1200GB HDD (из образа)</td></tr>
+<tr><td style="text-align: left">Отказоустойчивость подсистемы сбора событий</td><td style="text-align: left">обеспечивается Заказчиком</td></tr>
+<tr><td style="text-align: left">Аппаратная платформа и лицензии на ПО для SIEM-системы</td><td style="text-align: left">предоставляется Исполнителем</td></tr>
+<tr><td style="text-align: left">Отказоустойчивость для SIEM-системы</td><td style="text-align: left">предоставляется Исполнителем</td></tr>
+</tbody></table>
+</div>
+<h3 id="Время-реакции-в-зависимости-от-критичности"><a class="header" href="#Время-реакции-в-зависимости-от-критичности">Время реакции в зависимости от критичности</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Уровень критичности</th><th style="text-align: center">Время реакции на инцидент ИБ (с момента фиксации SIEM)</th><th style="text-align: center">Время базовой диагностики и информирования Заказчика</th></tr></thead><tbody>
+<tr><td style="text-align: left">Высокая</td><td style="text-align: center">не более 20 минут</td><td style="text-align: center">не более 30 минут</td></tr>
+<tr><td style="text-align: left">Средняя</td><td style="text-align: center">не более 30 минут</td><td style="text-align: center">не более 60 минут</td></tr>
+<tr><td style="text-align: left">Низкая</td><td style="text-align: center">не более 60 минут</td><td style="text-align: center">не более 120 минут</td></tr>
+</tbody></table>
+</div><div class="table-wrapper"><table><thead><tr><th style="text-align: left">Параметр</th><th style="text-align: left">Значение</th></tr></thead><tbody>
+<tr><td style="text-align: left">Режим предоставления услуги</td><td style="text-align: left">24×7</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="Изменение-профиля-услуг"><a class="header" href="#Изменение-профиля-услуг">Изменение профиля услуг</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Параметр</th><th style="text-align: left">Значение</th></tr></thead><tbody>
+<tr><td style="text-align: left">Время выполнения работ по подключению новых типовых источников</td><td style="text-align: left">36 часов</td></tr>
+<tr><td style="text-align: left">Время выполнения запроса на доработку политики выявления инцидентов ИБ</td><td style="text-align: left">84 часа</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="Обеспечение-работоспособности-платформы"><a class="header" href="#Обеспечение-работоспособности-платформы">Обеспечение работоспособности платформы</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Параметр</th><th style="text-align: left">Значение</th></tr></thead><tbody>
+<tr><td style="text-align: left">Период обслуживания платформы</td><td style="text-align: left">24×7</td></tr>
+<tr><td style="text-align: left">Доступность ядра SIEM</td><td style="text-align: left">Разовый простой – не более 16 часов<br>Доступность за квартал – не менее 98,5%<br>Количество технологических окон за квартал – не более 1<br>Максимальная длительность технологического окна – не более 6 часов</td></tr>
+<tr><td style="text-align: left">Доступность системы сбора событий ИБ</td><td style="text-align: left">Разовый простой – не более 24 часов<br>Доступность за квартал – не менее 97%</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="2-Расследование-инцидентов-ИБ"><a class="header" href="#2-Расследование-инцидентов-ИБ">2. Расследование инцидентов ИБ</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Уровень критичности</th><th style="text-align: center">Время реакции на инцидент (с момента информирования Заказчика)</th></tr></thead><tbody>
+<tr><td style="text-align: left">Высокая</td><td style="text-align: center">не более 60 минут</td></tr>
+<tr><td style="text-align: left">Средняя</td><td style="text-align: center">не более 120 минут</td></tr>
+<tr><td style="text-align: left">Низкая</td><td style="text-align: center">не более 360 минут</td></tr>
+</tbody></table>
+</div><div class="table-wrapper"><table><thead><tr><th style="text-align: left">Параметр</th><th style="text-align: left">Значение</th></tr></thead><tbody>
+<tr><td style="text-align: left">Режим предоставления услуги</td><td style="text-align: left">24×7</td></tr>
+<tr><td style="text-align: left">Условия обработки инцидентов</td><td style="text-align: left">Высокий — по умолчанию<br>Средний, Низкий — по запросу</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="3-Реагирование-на-инциденты-ИБ"><a class="header" href="#3-Реагирование-на-инциденты-ИБ">3. Реагирование на инциденты ИБ</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Параметр</th><th style="text-align: left">Значение</th></tr></thead><tbody>
+<tr><td style="text-align: left">Режим предоставления услуг</td><td style="text-align: left">24×7</td></tr>
+<tr><td style="text-align: left">Параметр предоставления услуг</td><td style="text-align: left">По запросу</td></tr>
+</tbody></table>
+</div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="requirements.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="acceptance.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="requirements.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="acceptance.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>
