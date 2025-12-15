@@ -8,7 +8,7 @@ class MDBookSidebarScrollbox extends HTMLElement {
         super();
     }
     connectedCallback() {
-        this.innerHTML = '<ol class="chapter"><li class="chapter-item expanded "><a href="1TS.html"><strong aria-hidden="true">1.</strong> Техническое задание</a></li><li class="chapter-item expanded "><a href="2appendix A (UML).html"><strong aria-hidden="true">2.</strong> Приложение А (UML)</a></li><li class="chapter-item expanded "><a href="3appendix B (C4).html"><strong aria-hidden="true">3.</strong> Приложение B (C4)</a></li></ol>';
+        this.innerHTML = '<ol class="chapter"><li class="chapter-item expanded "><a href="1TS.html"><strong aria-hidden="true">1.</strong> Техническое задание</a></li><li class="chapter-item expanded "><a href="2appendix A (UML).html"><strong aria-hidden="true">2.</strong> Приложение A (UML)</a></li><li class="chapter-item expanded "><a href="3appendix B (C4).html"><strong aria-hidden="true">3.</strong> Приложение B (C4)</a></li><li class="chapter-item expanded "><a href="4appendix C (IDEF0).html"><strong aria-hidden="true">4.</strong> Приложение C (IDEF0)</a></li><li class="chapter-item expanded "><a href="5appendix D (IDEF3).html"><strong aria-hidden="true">5.</strong> Приложение D (IDEF3)</a></li><li class="chapter-item expanded "><a href="6appendix E (DFD).html"><strong aria-hidden="true">6.</strong> Приложение E (DFD)</a></li></ol>';
         // Set the current, active page, and reveal it if it's hidden
         let current_page = document.location.href.toString().split("#")[0].split("?")[0];
         if (current_page.endsWith("/")) {
