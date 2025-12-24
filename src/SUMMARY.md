@@ -7,3 +7,4 @@
 - [Приложение C (IDEF0)](./4appendix%20C%20(IDEF0).md)
 - [Приложение D (IDEF3)](./5appendix%20D%20(IDEF3).md)
 - [Приложение E (DFD)](./6appendix%20E%20(DFD).md)
+- [Приложение F (BPMN)](./7appendix%20F%20(BPMN).md)
