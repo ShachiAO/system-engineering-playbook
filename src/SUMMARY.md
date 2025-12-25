@@ -8,3 +8,4 @@
 - [Приложение D (IDEF3)](./5appendix%20D%20(IDEF3).md)
 - [Приложение E (DFD)](./6appendix%20E%20(DFD).md)
 - [Приложение F (BPMN)](./7appendix%20F%20(BPMN).md)
+- [Статья](./8appendix%20G%20(Article).md)
